@@ -5,7 +5,8 @@ import os
 import copy
 import torch
 import shutil
-from pystopwatch2 import PyStopwatch
+#from pystopwatch2 import PyStopwatch
+from pystopwatch2.watch import PyStopwatch
 from taa.common import get_logger, add_filehandler
 from taa.search import get_path, search_policy, train_model_parallel
 import logging

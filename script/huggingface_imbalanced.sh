@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
-export CUDA_VISIBLE_DEVICES=0,1,2,3
+#cd text-autoaugment
+export PYTHONPATH=.
+export CUDA_VISIBLE_DEVICES=0
 
 for ir in 0.02 0.05 0.1
 do
