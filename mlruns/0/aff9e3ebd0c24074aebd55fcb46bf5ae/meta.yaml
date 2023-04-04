@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jovyan/examples/examples/pytorch/text-autoaugment/mlruns/0/aff9e3ebd0c24074aebd55fcb46bf5ae/artifacts
+end_time: 1680579568260
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: aff9e3ebd0c24074aebd55fcb46bf5ae
+run_name: gaudy-bug-955
+run_uuid: aff9e3ebd0c24074aebd55fcb46bf5ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1680579568251
+status: 3
+tags: []
+user_id: jovyan

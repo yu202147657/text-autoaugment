@@ -1,0 +1,69 @@
+Failure # 1 (occurred at 2023-04-04_03-27-21)
+multiprocessing.pool.RemoteTraceback: 
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/augmentation.py", line 87, in apply_augment
+    text = augment_fn(text, level * (high - low) + low)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/augmentation.py", line 56, in synonym_word_substitute
+    return aug.augment(text)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nlpaug/base_augmenter.py", line 119, in augment
+    augmented_results = [action_fx(clean_data) for _ in range(n)]
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nlpaug/base_augmenter.py", line 119, in <listcomp>
+    augmented_results = [action_fx(clean_data) for _ in range(n)]
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nlpaug/augmenter/word/synonym.py", line 121, in substitute
+    pos = self.model.pos_tag(original_tokens)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nlpaug/model/word_dict/wordnet.py", line 58, in pos_tag
+    results = nltk.pos_tag(tokens)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/tag/__init__.py", line 165, in pos_tag
+    tagger = _get_tagger(lang)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/tag/__init__.py", line 107, in _get_tagger
+    tagger = PerceptronTagger()
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/tag/perceptron.py", line 167, in __init__
+    find("taggers/averaged_perceptron_tagger/" + PICKLE)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/data.py", line 555, in find
+    return find(modified_name, paths)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/data.py", line 542, in find
+    return ZipFilePathPointer(p, zipentry)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/compat.py", line 41, in _decorator
+    return init_func(*args, **kwargs)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/data.py", line 394, in __init__
+    zipfile = OpenOnDemandZipFile(os.path.abspath(zipfile))
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/compat.py", line 41, in _decorator
+    return init_func(*args, **kwargs)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nltk/data.py", line 935, in __init__
+    zipfile.ZipFile.__init__(self, filename)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/zipfile.py", line 1266, in __init__
+    self._RealGetContents()
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/zipfile.py", line 1333, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+"""
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ImplicitFunc.train()[39m (pid=712, ip=192.168.119.72, repr=objective)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/trainable.py", line 368, in train
+    raise skipped from exception_cause(skipped)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/function_trainable.py", line 337, in entrypoint
+    return self._trainable_func(
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/function_trainable.py", line 654, in _trainable_func
+    output = fn()
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/search.py", line 85, in objective
+    result = train_and_eval(config['tag'], policy_opt=True, save_path=save_path, only_eval=False)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/train.py", line 49, in train_and_eval
+    train_dataset, val_dataset, test_dataset = get_datasets(dataset_type, policy_opt=policy_opt)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/data.py", line 83, in get_datasets
+    train_dataset = general_dataset(train_examples, tokenizer, text_transform=transform_train)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/custom_dataset.py", line 17, in __init__
+    texts_aug, labels_aug, n_dist = text_transform(self.texts, self.labels)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/transforms.py", line 35, in __call__
+    texts, labels, n_dist_value = t(texts, labels)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/data.py", line 108, in __call__
+    aug_texts = pool.map(partial_apply_augment, texts)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/multiprocessing/pool.py", line 364, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/multiprocessing/pool.py", line 771, in get
+    raise self._value
+zipfile.BadZipFile: File is not a zip file

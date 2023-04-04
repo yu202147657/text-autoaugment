@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+export PYTHONPATH=.
 export CUDA_VISIBLE_DEVICES=2,3,4,5
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
