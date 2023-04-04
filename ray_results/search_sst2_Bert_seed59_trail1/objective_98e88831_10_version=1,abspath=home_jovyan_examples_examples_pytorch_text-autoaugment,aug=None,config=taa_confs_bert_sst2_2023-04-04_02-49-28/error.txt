@@ -1,0 +1,52 @@
+Failure # 1 (occurred at 2023-04-04_02-49-42)
+multiprocessing.pool.RemoteTraceback: 
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nlpaug/model/word_dict/wordnet.py", line 19, in __init__
+    import nltk
+ModuleNotFoundError: No module named 'nltk'
+
+During handling of the above exception, another exception occurred:
+
+[36mray::ImplicitFunc.train()[39m (pid=1753, ip=192.168.119.70, repr=objective)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/augmentation.py", line 87, in apply_augment
+    text = augment_fn(text, level * (high - low) + low)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/augmentation.py", line 55, in synonym_word_substitute
+    aug = naw.SynonymAug(aug_max=max_seq_length, aug_p=m)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nlpaug/augmenter/word/synonym.py", line 66, in __init__
+    self.model = self.get_model(aug_src, lang, model_path, force_reload)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nlpaug/augmenter/word/synonym.py", line 163, in get_model
+    return nmw.WordNet(lang=lang, is_synonym=True)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/nlpaug/model/word_dict/wordnet.py", line 22, in __init__
+    raise ModuleNotFoundError('Missed nltk library. Install nltk by `pip install nltk`')
+ModuleNotFoundError: Missed nltk library. Install nltk by `pip install nltk`
+"""
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ImplicitFunc.train()[39m (pid=1753, ip=192.168.119.70, repr=objective)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/trainable.py", line 368, in train
+    raise skipped from exception_cause(skipped)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/function_trainable.py", line 337, in entrypoint
+    return self._trainable_func(
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/function_trainable.py", line 654, in _trainable_func
+    output = fn()
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/search.py", line 85, in objective
+    result = train_and_eval(config['tag'], policy_opt=True, save_path=save_path, only_eval=False)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/train.py", line 49, in train_and_eval
+    train_dataset, val_dataset, test_dataset = get_datasets(dataset_type, policy_opt=policy_opt)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/data.py", line 83, in get_datasets
+    train_dataset = general_dataset(train_examples, tokenizer, text_transform=transform_train)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/custom_dataset.py", line 17, in __init__
+    texts_aug, labels_aug, n_dist = text_transform(self.texts, self.labels)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/transforms.py", line 35, in __call__
+    texts, labels, n_dist_value = t(texts, labels)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/data.py", line 108, in __call__
+    aug_texts = pool.map(partial_apply_augment, texts)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/multiprocessing/pool.py", line 364, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/multiprocessing/pool.py", line 771, in get
+    raise self._value
+ModuleNotFoundError: Missed nltk library. Install nltk by `pip install nltk`
