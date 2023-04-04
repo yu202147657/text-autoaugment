@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jovyan/examples/examples/pytorch/text-autoaugment/mlruns/0/fe8299558bbf4887a3f703aa9705f90f/artifacts
+end_time: 1680638487453
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fe8299558bbf4887a3f703aa9705f90f
+run_name: /home/jovyan/examples/examples/pytorch/text-autoaugment/taa/models/sst2_Bert_pretrained_trail1_train-npc1000_seed59
+run_uuid: fe8299558bbf4887a3f703aa9705f90f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1680638463657
+status: 3
+tags: []
+user_id: jovyan

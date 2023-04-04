@@ -1,0 +1,74 @@
+{
+  "_version": 1,
+  "abspath": "/home/jovyan/examples/examples/pytorch/text-autoaugment",
+  "aug": null,
+  "config": [
+    "taa/confs/bert_sst2_example.yaml"
+  ],
+  "dataset": {
+    "data_dir": null,
+    "data_files": null,
+    "name": "sst2",
+    "path": "glue",
+    "text_key": "sentence"
+  },
+  "epoch": 1,
+  "ir": 0.02,
+  "level_0_0": 0.9040010708210178,
+  "level_0_1": 0.8484180951969003,
+  "level_1_0": 0.6696418088040663,
+  "level_1_1": 0.7635719753439552,
+  "level_2_0": 0.4609731504607233,
+  "level_2_1": 0.4287672152236284,
+  "level_3_0": 0.8472996597820797,
+  "level_3_1": 0.7646485700068448,
+  "lr": "4e-5",
+  "magnitude": 0.8,
+  "max_seq_length": 128,
+  "method": "taa",
+  "model": {
+    "type": "Bert"
+  },
+  "n_aug": 1,
+  "num_cpus": 40,
+  "num_gpus": 1,
+  "num_op": 2,
+  "num_policy": 4,
+  "num_search": 200,
+  "per_device_eval_batch_size": 128,
+  "per_device_train_batch_size": 16,
+  "policy_0_0": 1,
+  "policy_0_1": 3,
+  "policy_1_0": 1,
+  "policy_1_1": 3,
+  "policy_2_0": 4,
+  "policy_2_1": 1,
+  "policy_3_0": 4,
+  "policy_3_1": 0,
+  "prob_0_0": 0.35622542200616847,
+  "prob_0_1": 0.7497256037782707,
+  "prob_1_0": 0.6113480611338616,
+  "prob_1_1": 0.5620584137181628,
+  "prob_2_0": 0.8958938714291028,
+  "prob_2_1": 0.6130289708519171,
+  "prob_3_0": 0.6685304348022925,
+  "prob_3_1": 0.8006436533076186,
+  "redis": "localhost:6379",
+  "seed": 59,
+  "smoke": {
+    "test": false
+  },
+  "tag": "pretrained_trail1_train-npc1000_n-aug1",
+  "test": {
+    "npc": 30
+  },
+  "topN": 3,
+  "trail": 1,
+  "train": {
+    "npc": 1000
+  },
+  "until": 5,
+  "valid": {
+    "npc": 30
+  }
+}

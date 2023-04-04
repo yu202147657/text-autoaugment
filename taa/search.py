@@ -127,14 +127,15 @@ def search_policy(dataset, abspath, configfile=None, num_search=200, num_policy=
     ray.init(num_gpus=num_gpus, num_cpus=num_cpus)
 
     train_tfidf(dataset_type)  # calculate tf-idf score for TS and TI operations
-
+    print('train tfidf')
+    
     if method == 'taa':
         pkl_path = os.path.join(abspath, 'final_policy')
-        print(pkl_path)
         if not os.path.exists(pkl_path):
             os.makedirs(pkl_path)
         policy_dir = os.path.join(pkl_path, '%s_%s_seed%d_train-npc%d_n-aug%d_ir%.2f_%s.pkl' %
                                   (dataset_type, model_type, seed, train_npc, n_aug, ir, method))
+        print(policy_dir, '####POLICY DIR')
         total_computation = 0
         if os.path.isfile(policy_dir):  # have been searched
             logger.info('Use existing policy from %s' % policy_dir)
@@ -144,7 +145,9 @@ def search_policy(dataset, abspath, configfile=None, num_search=200, num_policy=
             logger.info(ops)
             space = {}
             for i in range(num_policy):
+                print(i, 'shouldbe 4')
                 for j in range(num_op):
+                    print('j, should be 2')
                     space['policy_%d_%d' % (i, j)] = tune.choice(list(range(0, len(ops))))
                     space['prob_%d_%d' % (i, j)] = tune.uniform(0.0, 1.0)
                     space['level_%d_%d' % (i, j)] = tune.uniform(0.0, 1.0)
@@ -166,8 +169,10 @@ def search_policy(dataset, abspath, configfile=None, num_search=200, num_policy=
             }
             tune_kwargs['config'].update(space)
             tune_kwargs['config'].update(copied_c)
+            print('GOT TO HYPEROPT SEARCH')
             algo = HyperOptSearch()
             scheduler = AsyncHyperBandScheduler()
+            print('GOT PAST SCHEDULER')
             register_trainable(name, objective)
             analysis = tune.run(objective, search_alg=algo, scheduler=scheduler, metric=reward_attr, mode="max",
                                 **tune_kwargs)

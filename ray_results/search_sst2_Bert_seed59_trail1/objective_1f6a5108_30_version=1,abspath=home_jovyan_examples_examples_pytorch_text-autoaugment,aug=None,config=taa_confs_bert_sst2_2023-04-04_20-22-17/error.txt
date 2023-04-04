@@ -1,0 +1,25 @@
+Failure # 1 (occurred at 2023-04-04_20-22-34)
+[36mray::ImplicitFunc.train()[39m (pid=4381, ip=192.168.144.131, repr=objective)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/trainable.py", line 368, in train
+    raise skipped from exception_cause(skipped)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/function_trainable.py", line 337, in entrypoint
+    return self._trainable_func(
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/ray/tune/trainable/function_trainable.py", line 654, in _trainable_func
+    output = fn()
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/search.py", line 85, in objective
+    result = train_and_eval(config['tag'], policy_opt=True, save_path=save_path, only_eval=False)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/train.py", line 49, in train_and_eval
+    train_dataset, val_dataset, test_dataset = get_datasets(dataset_type, policy_opt=policy_opt)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/data.py", line 83, in get_datasets
+    train_dataset = general_dataset(train_examples, tokenizer, text_transform=transform_train)
+  File "/home/jovyan/examples/examples/pytorch/text-autoaugment/taa/custom_dataset.py", line 26, in __init__
+    tmp_features = tokenizer(self.texts, max_length=max_seq_length, padding='max_length', truncation=True)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/transformers/tokenization_utils_base.py", line 2537, in __call__
+    encodings = self._call_one(text=text, text_pair=text_pair, **all_kwargs)
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/transformers/tokenization_utils_base.py", line 2623, in _call_one
+    return self.batch_encode_plus(
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/transformers/tokenization_utils_base.py", line 2814, in batch_encode_plus
+    return self._batch_encode_plus(
+  File "/opt/saturncloud/envs/saturn/lib/python3.9/site-packages/transformers/tokenization_utils_fast.py", line 428, in _batch_encode_plus
+    encodings = self._tokenizer.encode_batch(
+TypeError: TextEncodeInput must be Union[TextInputSequence, Tuple[InputSequence, InputSequence]]
