@@ -8,7 +8,6 @@ pandas>=0.24.1
 networkx>=2.2
 flake8>=3.7.9
 ray>=1.6.0
-hyperopt
 pytest-runner
 ray[tune]
 fastBPE>=0.1.0
@@ -29,3 +28,4 @@ torchtext==0.15.1
 datasets==2.11.0
 git+https://github.com/huggingface/transformers
 git+https://github.com/wbaek/theconf.git
+hyperopt
