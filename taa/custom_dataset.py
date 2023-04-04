@@ -22,6 +22,7 @@ class general_dataset(Dataset):
 
         # convert words to tokens and then to ids
         self.features = []
+        print(self.texts, type(self.texts))
         tmp_features = tokenizer(self.texts, max_length=max_seq_length, padding='max_length', truncation=True)
         for i in range(len(self.texts)):
             self.features.append(InputFeatures(
