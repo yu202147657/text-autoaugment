@@ -76,8 +76,8 @@ def train_and_eval(tag, policy_opt, save_path=None, only_eval=False):
         do_train=do_train,
         do_eval=True,
         evaluation_strategy="epoch",
-        #save_strategy="epoch",
-        #save_total_limit=1,
+        save_strategy="epoch",
+        save_total_limit=2,
         #save_strategy="no", 
         num_train_epochs=config['epoch'],  # total number of training epochs
         per_device_train_batch_size=per_device_train_batch_size,  # batch size per device during training
@@ -85,7 +85,7 @@ def train_and_eval(tag, policy_opt, save_path=None, only_eval=False):
         warmup_steps=warmup_steps,
         learning_rate=float(config['lr']),
         logging_dir=logging_dir,  # directory for storing logs
-        #load_best_model_at_end=True,
+        load_best_model_at_end=True,
         metric_for_best_model="eval_accuracy",
         seed=config['seed']
     )
@@ -130,7 +130,7 @@ if __name__ == '__main__':
     parser.add_argument('--num-op', type=int, default=2)
     parser.add_argument('--num-policy', type=int, default=4)
     parser.add_argument('--only-eval', action='store_true')
-    parser.add_argument('--abspath', type=str, default='/home/renshuhuai/text-autoaugment')
+    parser.add_argument('--abspath', type=str, default='~/examples/examples/pytorch/text-autoaugment/taa')
     parser.add_argument('--n-aug', type=int, default=16,
                         help='magnification of augmentation. synthesize n-aug for each given sample')
     parser.add_argument('--train-npc', type=int, default=40, help='train example num per class')
