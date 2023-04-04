@@ -1,3 +1,5 @@
+**Updated packages and code as of April 4 for the following paper:**
+
 # Text-AutoAugment (TAA)
 This repository contains the code for our paper [Text AutoAugment: Learning Compositional Augmentation Policy for Text Classification](https://arxiv.org/abs/2109.00523) (EMNLP 2021 main conference).
 
