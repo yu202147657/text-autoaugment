@@ -76,7 +76,9 @@ def train_and_eval(tag, policy_opt, save_path=None, only_eval=False):
         do_train=do_train,
         do_eval=True,
         evaluation_strategy="epoch",
-        save_strategy="no", 
+        #save_strategy="epoch",
+        #save_total_limit=1,
+        #save_strategy="no", 
         num_train_epochs=config['epoch'],  # total number of training epochs
         per_device_train_batch_size=per_device_train_batch_size,  # batch size per device during training
         per_device_eval_batch_size=config['per_device_eval_batch_size'],  # batch size for evaluation

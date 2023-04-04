@@ -22,7 +22,7 @@ parser.add_argument('--num-policy', type=int, default=4)
 parser.add_argument('--num-search', type=int, default=200)
 parser.add_argument('--redis', type=str, default='localhost:6379')
 parser.add_argument('--smoke-test', action='store_true')  # default to False
-parser.add_argument('--abspath', type=str, default='/home/renshuhuai/text-autoaugment')
+parser.add_argument('--abspath', type=str, default='~/examples/examples/pytorch/text-autoaugment')
 parser.add_argument('--n-aug', type=int, default=16,
                     help='magnification of augmentation. synthesize n-aug for each given sample')
 parser.add_argument('--train-npc', type=int, default=40, help='train example num per class')

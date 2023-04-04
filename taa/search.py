@@ -130,6 +130,7 @@ def search_policy(dataset, abspath, configfile=None, num_search=200, num_policy=
 
     if method == 'taa':
         pkl_path = os.path.join(abspath, 'final_policy')
+        print(pkl_path)
         if not os.path.exists(pkl_path):
             os.makedirs(pkl_path)
         policy_dir = os.path.join(pkl_path, '%s_%s_seed%d_train-npc%d_n-aug%d_ir%.2f_%s.pkl' %

@@ -12,7 +12,7 @@ do
     do
       python examples/reproduce_experiment.py \
       -c taa/confs/bert_sst2_example.yaml \
-      --abspath '/home/renshuhuai/text-autoaugment' \
+      --abspath '~/examples/examples/pytorch/text-autoaugment' \
       --n-aug 1 \
       --num-op 2 \
       --num-policy 4 \
